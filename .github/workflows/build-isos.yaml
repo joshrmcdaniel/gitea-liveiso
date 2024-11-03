@@ -18,9 +18,13 @@ jobs:
           sudo live-boot config --architecture amd64 --distribution bookworm \
           --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner" \
           --archive-areas "main contrib non-free non-free-firmware"
+          sudo mkdir -p config/includes.chroot
           sudo cp -r includes/* config/includes.chroot/.
+          sudo mkdir -p config/archives
           sudo cp -r extra-repos/* config/archives/.
+          sudo mkdir -p config/package-lists
           sudo cp -r package-lists/* config/package-lists/.
+          sudo mkdir -p config/hooks/normal
           sudo cp -r hooks/normal/* config/hooks/normal/.
           sudo live-boot build
       - name: Archive build
