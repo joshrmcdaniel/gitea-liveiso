@@ -6,7 +6,7 @@ case $(uname -m) in
     gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-linux-amd64"
     ;;
     arm64)
-    gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-darwin-arm64"
+    gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-linux-arm64"
     ;;
     arm*7)
     gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-linux-arm-7"
