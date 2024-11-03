@@ -12,12 +12,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install prerequisites
-        run: |
-          sudo apt update
-          sudo apt install -y live-boot live-build
+        run: >-
+          sudo apt update &&
+          sudo apt install -y
+          live-boot live-build
+          live-config live-boot-initramfs-tools
+          live-config-sysvinit
+          squashfs-tools isolinux
       - name: Build ISO Config
         run: >-
           sudo lb config --architecture amd64 --distribution bookworm
+          --mirror-bootstrap "http://cdn.debian.net/debian/" --mirror-chroot "http://cdn.debian.net/debian/" --mirror-chroot-security "http://security.debian.org/debian/"
           --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner"
           --archive-areas "main contrib non-free non-free-firmware"; ls -l
       - name: Move config files
