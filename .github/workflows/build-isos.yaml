@@ -20,8 +20,10 @@ jobs:
           squashfs-tools isolinux
       - name: Build ISO Config
         run: >-
-          sudo lb config --architecture amd64 
+          sudo lb config --architecture amd64 --distribution bookworm
+          --mirror-bootstrap "http://archive.ubuntu.com/ubuntu/" --mirror-chroot "http://archive.ubuntu.com/ubuntu/" --mirror-chroot-security "http://archive.ubuntu.com/ubuntu/"
           --binary-images iso-hybrid --bootappend-live "boot=live components username=act_runner"
+          --archive-areas "main restricted universe multiverse"
       - name: Move config files
         run: |
           sudo mkdir -p config/includes.chroot
