@@ -1,0 +1,30 @@
+name: Build Gitea ISO
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build_iso:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build ISO
+        run: |
+          sudo apt update
+          sudo apt install -y live-boot
+          lb config --architecture amd64 --distribution bookworm \
+          --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner" \
+          --archive-areas "main contrib non-free non-free-firmware"
+          cp -r includes/* config/includes.chroot/.
+          cp -r extra-repos/* config/archives/.
+          cp -r package-lists/* config/package-lists/.
+          cp -r hooks/normal/* config/hooks/normal/.
+          lb build
+      - name: Archive build
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitea-runner.iso
+          path: live-image-amd64.hybrid.iso

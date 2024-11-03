@@ -1,0 +1,31 @@
+#!/bin/sh -e
+
+gitea_url=""
+case $(uname -m) in
+    x86_64|amd64|x64)
+    gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-linux-amd64"
+    ;;
+    arm64)
+    gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-darwin-arm64"
+    ;;
+    arm*7)
+    gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-linux-arm-7"
+    ;;
+    arm*6)
+    gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-linux-arm-6"
+    ;;
+    arm*5)
+    gitea_url="https://dl.gitea.com/act_runner/0.2.11/act_runner-0.2.11-linux-arm-5"
+    ;;
+    *)
+    echo "unknown arch"
+    exit 1
+    ;;
+esac
+
+curl -fsSL "$gitea_url" -o /usr/local/bin/act_runner
+
+chmod +x /usr/local/bin/act_runner
+
+systemctl enable act_runner.service
+usermod -aG docker act_runner
