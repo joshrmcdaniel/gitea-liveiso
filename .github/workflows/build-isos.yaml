@@ -15,12 +15,12 @@ jobs:
         run: >-
           sudo apt update &&
           sudo apt install -y
-          live-boot live-build
+          live-build
           live-config live-boot-initramfs-tools
           squashfs-tools isolinux
       - name: Build ISO Config
         run: >-
-          sudo lb config --architecture amd64 --distribution bookworm
+          sudo lb config --architecture amd64
           --mirror-bootstrap "http://archive.ubuntu.com/ubuntu/" --mirror-chroot "http://archive.ubuntu.com/ubuntu/" --mirror-chroot-security "http://archive.ubuntu.com/ubuntu/"
           --binary-images iso-hybrid --bootappend-live "boot=live components username=act_runner"
           --archive-areas "main restricted universe multiverse"
