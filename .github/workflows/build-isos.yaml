@@ -21,7 +21,7 @@ jobs:
       - name: Build ISO Config
         run: >-
           sudo lb config --architecture amd64 --distribution bookworm
-          --mirror-bootstrap "http://cdn.debian.net/debian/" --mirror-chroot "http://cdn.debian.net/debian/" --mirror-chroot-security "http://debian.org/debian-security/"
+          --mirror-bootstrap "https://deb.debian.org/debian" --mirror-chroot "https://deb.debian.org/debian" --mirror-chroot-security "https://deb.debian.org/debian-security/"
           --binary-images iso-hybrid --bootappend-live "boot=live components username=act_runner"
           --archive-areas "main contrib non-free non-free-firmware"
       - name: Move config files
