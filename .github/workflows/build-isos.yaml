@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install prerequisites
         run: |
           sudo apt update
           sudo apt install -y live-boot
       - name: Build ISO Config
         run: >-
-          sudo live-boot config --architecture amd64 --distribution bookworm
+          sudo ls /sbin/ ; sudo lb config --architecture amd64 --distribution bookworm
           --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner"
           --archive-areas "main contrib non-free non-free-firmware"; ls -l
       - name: Move config files
