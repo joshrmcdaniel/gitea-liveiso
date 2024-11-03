@@ -11,13 +11,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Build ISO
+      - name: Install prerequisites
         run: |
           sudo apt update
           sudo apt install -y live-boot
-          sudo live-boot config --architecture amd64 --distribution bookworm \
-          --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner" \
+      - name: Build ISO Config
+        run: -<
+          sudo live-boot config --architecture amd64 --distribution bookworm
+          --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner"
           --archive-areas "main contrib non-free non-free-firmware"
+      - name: Move config files
+        run: |
           sudo mkdir -p config/includes.chroot
           sudo cp -r includes/* config/includes.chroot/.
           sudo mkdir -p config/archives
@@ -26,7 +30,8 @@ jobs:
           sudo cp -r package-lists/* config/package-lists/.
           sudo mkdir -p config/hooks/normal
           sudo cp -r hooks/normal/* config/hooks/normal/.
-          sudo live-boot build
+      - name: Build ISO
+        run: sudo live-boot build
       - name: Archive build
         uses: actions/upload-artifact@v4
         with:
