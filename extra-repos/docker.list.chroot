@@ -1,1 +1,6 @@
-deb [arch="${LIVE_BOOT_ARCH}" signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian/${LB_DISTRIBUTION} ${LIVE_BOOT_CODENAME} stable
+#if ARCHITECTURES amd64
+deb [arch="amd64" signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian/${LB_CODENAME} stable
+#endif
+#if ARCHITECTURES arm64
+deb [arch="amd64" signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian/${LB_CODENAME} stable
+#endif
