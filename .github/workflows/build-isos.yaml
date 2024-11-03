@@ -15,14 +15,14 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y live-boot
-          lb config --architecture amd64 --distribution bookworm \
+          sudo lb config --architecture amd64 --distribution bookworm \
           --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner" \
           --archive-areas "main contrib non-free non-free-firmware"
-          cp -r includes/* config/includes.chroot/.
-          cp -r extra-repos/* config/archives/.
-          cp -r package-lists/* config/package-lists/.
-          cp -r hooks/normal/* config/hooks/normal/.
-          lb build
+          sudo cp -r includes/* config/includes.chroot/.
+          sudo cp -r extra-repos/* config/archives/.
+          sudo cp -r package-lists/* config/package-lists/.
+          sudo cp -r hooks/normal/* config/hooks/normal/.
+          sudo lb build
       - name: Archive build
         uses: actions/upload-artifact@v4
         with:
