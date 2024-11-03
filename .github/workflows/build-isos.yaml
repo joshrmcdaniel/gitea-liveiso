@@ -14,7 +14,7 @@ jobs:
       - name: Install prerequisites
         run: |
           sudo apt update
-          sudo apt install -y live-boot
+          sudo apt install -y live-boot live-build
       - name: Build ISO Config
         run: >-
           sudo ls /sbin/; sudo ls /usr/bin/l* ; sudo lb config --architecture amd64 --distribution bookworm
