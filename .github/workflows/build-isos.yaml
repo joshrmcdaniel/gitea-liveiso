@@ -20,10 +20,8 @@ jobs:
           squashfs-tools isolinux
       - name: Build ISO Config
         run: >-
-          sudo lb config --architecture amd64 --distribution bookworm
-          --mirror-bootstrap "https://deb.debian.org/debian" --mirror-chroot "https://deb.debian.org/debian" --mirror-chroot-security "https://deb.debian.org/debian-security/"
+          sudo lb config --architecture amd64 
           --binary-images iso-hybrid --bootappend-live "boot=live components username=act_runner"
-          --archive-areas "main contrib non-free non-free-firmware"
       - name: Move config files
         run: |
           sudo mkdir -p config/includes.chroot
