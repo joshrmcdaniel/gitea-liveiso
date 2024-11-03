@@ -1,1 +1,0 @@
-deb [arch="${LB_ARCHITECTURE}" signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian ${LB_DISTRIBUTION} stable

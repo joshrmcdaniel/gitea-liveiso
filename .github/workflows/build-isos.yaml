@@ -28,8 +28,6 @@ jobs:
         run: |
           sudo mkdir -p config/includes.chroot
           sudo cp -r includes/* config/includes.chroot/.
-          sudo mkdir -p config/archives
-          sudo cp -r extra-repos/* config/archives/.
           sudo mkdir -p config/package-lists
           sudo cp -r package-lists/* config/package-lists/.
           sudo mkdir -p config/hooks/normal
