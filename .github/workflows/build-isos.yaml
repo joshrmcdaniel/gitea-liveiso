@@ -22,7 +22,7 @@ jobs:
         run: >-
           sudo lb config --architecture amd64 --distribution bookworm
           --mirror-bootstrap "http://cdn.debian.net/debian/" --mirror-chroot "http://cdn.debian.net/debian/" --mirror-chroot-security "http://security.debian.org/debian/"
-          --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner"
+          --binary-images iso-hybrid --bootappend-live "boot=live components username=act_runner"
           --archive-areas "main contrib non-free non-free-firmware"
       - name: Move config files
         run: |
