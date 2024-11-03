@@ -17,7 +17,7 @@ jobs:
           sudo apt install -y live-boot
       - name: Build ISO Config
         run: >-
-          sudo ls /sbin/ ; sudo lb config --architecture amd64 --distribution bookworm
+          sudo ls /sbin/; sudo ls /usr/bin/l* ; sudo lb config --architecture amd64 --distribution bookworm
           --binary-images iso-hybrid --bootappend-live "boot=live components hostname=gitea-runner username=act_runner"
           --archive-areas "main contrib non-free non-free-firmware"; ls -l
       - name: Move config files
