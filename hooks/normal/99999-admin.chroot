@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+update-ca-certificates
+
+curl -sL https://go.dev/dl/go1.23.2.linux-amd64.tar.gz -o /var/run/go1.23.2.tar.gz
+tar -C /usr/local -xzf /var/run/go1.23.2.tar.gz
+rm /var/run/go1.23.2.tar.gz
+echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile

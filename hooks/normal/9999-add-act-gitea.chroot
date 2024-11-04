@@ -28,4 +28,9 @@ curl -fsSL "$gitea_url" -o /usr/local/bin/act_runner
 chmod +x /usr/local/bin/act_runner
 
 systemctl enable act_runner.service
+mkdir /srv/act_runner
+mkdir /etc/act_runner
+useradd -d /srv/act_runner -r -s /bin/false act_runner
+chown -R act_runner:act_runner /srv/act_runner
+chown -R act_runner:act_runner /etc/act_runner
 usermod -aG docker act_runner
