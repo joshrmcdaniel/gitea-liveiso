@@ -4,7 +4,7 @@ build a debian live iso with act_runner and commonly used programs
 
 designed to be an ephemeral runner; meant to run over pxe. i use WoL with baremetal to boot into the distro
 
-**CI doesn't work, built locally**
+**CI doesn't work, blame github. built locally**
 
 ## Usage
 
