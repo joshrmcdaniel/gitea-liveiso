@@ -23,7 +23,7 @@ sudo ./build.sh
 ``` s
 # in pxe
 imgfree
-set boot_url your.host/path/to/files/
+set boot_url http://your.host/path/to/files/
 kernel ${boot_url}vmlinuz boot=live fetch=${boot_url}filesystem.squashfs username=act_runner initrd=initrd.magic ${cmdline}
 initrd ${boot_url}initrd
 boot
