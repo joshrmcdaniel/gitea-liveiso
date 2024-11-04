@@ -12,6 +12,21 @@ designed to be an ephemeral runner; meant to run over pxe. i use WoL with bareme
 apt install live-build
 
 sudo ./build.sh
+
+# wherever the files are
+7z x live-image-amd64.hybrid.iso live/filesystem.squashfs live/initrd.img live/vmlinuz
+
+```
+
+`live/filesystem.squashfs`, `live/initrd.img `, `live/vmlinuz` needed for pxe
+
+``` s
+# in pxe
+imgfree
+set boot_url your.host/path/to/files/
+kernel ${boot_url}vmlinuz boot=live fetch=${boot_url} username=act_runner initrd=initrd.magic ${cmdline}
+initrd ${boot_url}initrd
+boot
 ```
 
 once booted mount nas and register runner manually
