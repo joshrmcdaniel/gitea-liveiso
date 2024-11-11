@@ -28,8 +28,8 @@ curl -fsSL "$gitea_url" -o /usr/local/bin/act_runner
 chmod +x /usr/local/bin/act_runner
 
 # uncomment for nas
-# echo "your.nas:/path/to/gitea-runner/config  /etc/act_runner nfs rw,bg,soft,intr,nosuid  0 0" >> /etc/fstab
-# echo "your.nas:/path/to/gitea-runner/config  /srv/act_runner nfs rw,bg,soft,intr,nosuid  0 0" >> /etc/fstab
+# echo "your.nas:/path/to/gitea-runner/config  /etc/act_runner nfs rw,bg,soft,intr,nosuid,uid=1024,gid=100" >> /etc/fstab
+# echo "your.nas:/path/to/gitea-runner/config  /srv/act_runner nfs rw,bg,soft,intr,nosuid,uid=1024,gid=100" >> /etc/fstab
 
 systemctl enable act_runner.service
 mkdir /srv/act_runner
