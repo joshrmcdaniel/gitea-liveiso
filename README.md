@@ -8,6 +8,13 @@ designed to be an ephemeral runner; meant to run over pxe. i use WoL with bareme
 
 ## Usage
 
+
+**prior to running**, ensure your config is stored remoted. modify [these 2 lines](./hooks/normal/9995-add-act-gitea.chroot#L31-L32) to the proper path
+
+the config should store the runner yaml, and the auth json for runner auth.
+
+>if your config is not remote, ¯\_(ツ)_/¯
+
 ``` shell
 apt install live-build
 
@@ -29,9 +36,8 @@ initrd ${boot_url}initrd
 boot
 ```
 
-once booted mount nas and register runner manually
+once booted, the act runner will be on succesfully
 
 ## TODO
 
-- figure out persistence via nfs
 - turn off machine after idle time.
